@@ -9,6 +9,8 @@ const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
   </a>
 );
 
+
+
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
