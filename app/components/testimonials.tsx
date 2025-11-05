@@ -1,110 +1,249 @@
-"use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from './icons';
+// "use client";
 
-const testimonialsData = [
-  {
-    quote:
-      "5 O'Clock App has been a game-changer for our weeknight traffic. We've seen a 30% increase in customers during what used to be our slowest hours. The platform is incredibly easy to use.",
-    name: 'Maria Rodriguez',
-    title: 'Owner, The Golden Spoon',
-    image: 'https://picsum.photos/id/1027/100/100',
-  },
-  {
-    quote:
-      "We were skeptical at first, but the results speak for themselves. We're reaching a whole new demographic of diners who have now become regulars. I can't recommend it enough.",
-    name: 'Johnathan Chen',
-    title: 'Manager, The Crafty Brew',
-    image: 'https://picsum.photos/id/1005/100/100',
-  },
-  {
-    quote:
-      'The analytics dashboard is fantastic. It gives us clear insights into our performance and helps us tailor our deals effectively. It\'s an essential tool for any modern restaurant.',
-    name: 'Samantha Miller',
-    title: 'Marketing Director, The Seaside Grill',
-    image: 'https://picsum.photos/id/1011/100/100',
-  },
-];
+// import React, { useState, useEffect, useCallback } from "react";
+// import { ChevronLeftIcon, ChevronRightIcon, Sparkles } from "lucide-react";
+// import { Input } from "./ui/input";
+// import { textarea } from "framer-motion/client";
+// import { Textarea } from "./ui/textarea";
+// // import { Toast } from "./ui/toast";
+// import { Button } from "./ui/button";
 
-const Testimonials: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+// //  Testimonial Data
+// const testimonialsData = [
+//   {
+//     quote:
+//       "5 O'Clock App has been a game-changer for our weeknight traffic. We've seen a 30% increase in customers during what used to be our slowest hours. The platform is incredibly easy to use.",
+//     name: "Maria Rodriguez",
+//     title: "Owner, The Golden Spoon",
+//     image: "https://picsum.photos/id/1027/100/100",
+//   },
+//   {
+//     quote:
+//       "We were skeptical at first, but the results speak for themselves. We're reaching a whole new demographic of diners who have now become regulars. I can't recommend it enough.",
+//     name: "Johnathan Chen",
+//     title: "Manager, The Crafty Brew",
+//     image: "https://picsum.photos/id/1005/100/100",
+//   },
+//   {
+//     quote:
+//       "The analytics dashboard is fantastic. It gives us clear insights into our performance and helps us tailor our deals effectively. It's an essential tool for any modern restaurant.",
+//     name: "Samantha Miller",
+//     title: "Marketing Director, The Seaside Grill",
+//     image: "https://picsum.photos/id/1011/100/100",
+//   },
+// ];
 
-  const nextTestimonial = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
-  }, []);
+// const Testimonials: React.FC = () => {
+//   // --- Testimonial carousel state ---
+//   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonialsData.length) % testimonialsData.length);
-  };
+//   const nextTestimonial = useCallback(() => {
+//     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
+//   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextTestimonial();
-    }, 5000); // Auto-change testimonial every 5 seconds
+//   const prevTestimonial = () => {
+//     setCurrentIndex(
+//       (prevIndex) =>
+//         (prevIndex - 1 + testimonialsData.length) % testimonialsData.length
+//     );
+//   };
 
-    return () => clearInterval(interval);
-  }, [nextTestimonial]);
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       nextTestimonial();
+//     }, 5000);
+//     return () => clearInterval(interval);
+//   }, [nextTestimonial]);
 
-  const { quote, name, title, image } = testimonialsData[currentIndex];
+//   const { quote, name, title, image } = testimonialsData[currentIndex];
 
-  return (
-    <section className="py-20 bg-gray-950">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white">What Our Partners Say</h2>
-        </div>
+//   // --- Waitlist form state ---
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     phone: "",
+//     city: "",
+//     message: "",
+//   });
 
-        <div className="relative max-w-3xl mx-auto bg-gray-900 rounded-xl border border-gray-800 p-8 md:p-12 shadow-lg">
-          <div className="text-center">
-            <p className="text-lg md:text-xl italic text-gray-300 mb-8">"{quote}"</p>
-            <div className="flex items-center justify-center">
-              <img
-                src={image}
-                alt={name}
-                className="w-16 h-16 rounded-full mr-4 border-2 border-teal-400"
-              />
-              <div>
-                <h4 className="text-xl font-bold text-white">{name}</h4>
-                <p className="text-teal-400">{title}</p>
-              </div>
-            </div>
-          </div>
+//   const handleChange = (
+//     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+//   ) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
 
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-800 p-2 rounded-full text-white hover:bg-teal-500 transition-colors"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeftIcon className="h-6 w-6" />
-          </button>
+//   const handleSubmit = (e: React.FormEvent) => {
+//     e.preventDefault();
+//     console.log("Form submitted:", formData);
+//     alert("Thank you for joining the waitlist!");
+//     setFormData({
+//       name: "",
+//       email: "",
+//       phone: "",
+//       city: "",
+//       message: "",
+//     });
+//   };
 
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-gray-800 p-2 rounded-full text-white hover:bg-teal-500 transition-colors"
-            aria-label="Next testimonial"
-          >
-            <ChevronRightIcon className="h-6 w-6" />
-          </button>
-        </div>
+//   return (
+//     <section id="waitlist" className="py-24 relative">
+//       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
 
-        {/* Dots Navigation */}
-        <div className="flex justify-center mt-8 gap-2">
-          {testimonialsData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentIndex === index ? 'bg-teal-400 scale-125' : 'bg-gray-700 hover:bg-gray-500'
-              }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+//       <div className="container mx-auto px-4 relative z-10">
+//         {/* --- Testimonial Section --- */}
+//         <div className="max-w-3xl mx-auto mb-20 text-center">
+//           <div className="relative">
 
-export default Testimonials;
+
+//             <div className="flex justify-center items-center gap-6 mt-8">
+//               <button
+//                 onClick={prevTestimonial}
+//                 className="p-2 rounded-full bg-primary/10 hover:bg-primary/20"
+//               >
+//                 <ChevronLeftIcon className="w-5 h-5 text-primary" />
+//               </button>
+//               <button
+//                 onClick={nextTestimonial}
+//                 className="p-2 rounded-full bg-primary/10 hover:bg-primary/20"
+//               >
+//                 <ChevronRightIcon className="w-5 h-5 text-primary" />
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* --- Waitlist Form Section --- */}
+//         <div className="max-w-2xl mx-auto">
+//           <div className="text-center mb-12 space-y-2">
+//             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+//               <Sparkles className="h-4 w-4 text-primary" />
+
+//             </div>
+//             <h2 className="text-4xl md:text-5xl font-bold text-white ">
+//               Join The <span className="bg-gradient-to-r from-[#1394f9] to-[#de9bfd]">Waitlist</span>
+//             </h2>
+//             <p className="text-lg text-muted-foreground">
+//               Be among the first to experience the future of social dining. Get
+//               special offers and exclusive perks.
+//             </p>
+//           </div>
+
+//           <form
+//             onSubmit={handleSubmit}
+//             className="space-y-6 glass-card p-8 rounded-2xl animate-scale-in"
+//           >
+//             <div className="space-y-4">
+//               {/* Full Name */}
+//               <div className="space-y-2">
+//                 <label
+//                   htmlFor="name"
+//                   className="text-sm font-medium text-foreground/80"
+//                 >
+//                   Full Name *
+//                 </label>
+//                 <Input
+//                   id="name"
+//                   name="name"
+//                   type="text"
+//                   required
+//                   value={formData.name}
+//                   onChange={handleChange}
+//                   placeholder="Enter your name"
+//                 />
+//               </div>
+
+//               {/* Email */}
+//               <div className="space-y-2">
+//                 <label
+//                   htmlFor="email"
+//                   className="text-sm font-medium text-foreground/80"
+//                 >
+//                   Email Address *
+//                 </label>
+//                 <Input
+//                   id="email"
+//                   name="email"
+//                   type="email"
+//                   required
+//                   value={formData.email}
+//                   onChange={handleChange}
+//                   placeholder="you@example.com"
+//                 />
+//               </div>
+
+//               {/* Phone */}
+//               <div className="space-y-2">
+//                 <label
+//                   htmlFor="phone"
+//                   className="text-sm font-medium text-foreground/80"
+//                 >
+//                   Phone Number
+//                 </label>
+//                 <Input
+//                   id="phone"
+//                   name="phone"
+//                   type="tel"
+//                   value={formData.phone}
+//                   onChange={handleChange}
+//                   placeholder="+1 (555) 000-0000"
+//                 />
+//               </div>
+
+//               {/* City */}
+//               <div className="space-y-2">
+//                 <label
+//                   htmlFor="city"
+//                   className="text-sm font-medium text-foreground/80"
+//                 >
+//                   Your City (Optional)
+//                 </label>
+//                 <Input
+//                   id="city"
+//                   name="city"
+//                   type="text"
+//                   value={formData.city}
+//                   onChange={handleChange}
+//                   placeholder="New York, Los Angeles, etc."
+//                 />
+//               </div>
+
+//               {/* Message */}
+//               <div className="space-y-2">
+//                 <label
+//                   htmlFor="message"
+//                   className="text-sm font-medium text-foreground/80"
+//                 >
+//                   Message or Questions (Optional)
+//                 </label>
+//                 <Textarea
+//                   id="message"
+//                   name="message"
+//                   value={formData.message}
+//                   onChange={handleChange}
+//                   placeholder="Tell us what you're most excited about..."
+//                   rows={4}
+//                 />
+//               </div>
+//             </div>
+
+//             <Button type="submit" variant="hero" size="lg" className="w-full,  px-6 py-2 font-semibold text-white rounded-lg bg-gradient-to-r from-[#1394f9] to-[#de9bfd] hover:from-white hover:to-white hover:text-black text-gray-800 border border-gray-300 transition-all duration-300 shadow-md ml-60">
+//               Submit
+//             </Button>
+
+//             <p className="text-xs text-center text-muted-foreground text-white">
+//               Email: info@5oclockapp.com
+//             </p>
+//           </form>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Testimonials;
+
+
+
+
+

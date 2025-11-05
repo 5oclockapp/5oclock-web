@@ -26,14 +26,15 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-sm border-b border-gray-800">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <a href="#" className="flex items-center">
+   <div className="flex items-center">
   <img 
-    src="/assets/App Icon.png" 
+    src="/assets/logo-w-footer.png" 
     alt="5 O'Clock Logo" 
-    className="h-10 w-auto"
+    className="h-10 w-auto mt-4"
   />
-  <h5 >oclock</h5>
-</a>
+  {/* <h5 className="text-white ml-2 text-3xl mt-5">'clock</h5> */}
+</div>
+
 
 
         <nav className="hidden lg:flex items-center gap-6 ml-200">
@@ -57,7 +58,7 @@ const Header: React.FC = () => {
 </button> */}
 
 <button className="px-6 py-2 font-semibold text-white rounded-lg bg-gradient-to-r from-[#1394f9] to-[#de9bfd] hover:from-white hover:to-white hover:text-black text-gray-800 border border-gray-300 transition-all duration-300 shadow-md">
-  Join the Wishlist
+  Join the Waitlist
 </button>
 
 
