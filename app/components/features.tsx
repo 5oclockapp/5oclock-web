@@ -131,7 +131,7 @@ const Features: React.FC = () => {
 
 
             <div className="flex justify-center mt-10">
-              <button className="px-8 py-3 font-semibold text-white rounded-lg border border-teal-400 hover:bg-gradient-to-r hover:from-[#00f5d4] hover:to-[#7b2ff7] hover:text-black transition-all duration-300 shadow-md">
+              <button className="px-8 py-3 font-semibold text-white rounded-lg border border-teal-400 hover:bg-gradient-to-r hover:from-[#1394f9] hover:to-[#de9bfd] hover:text-black transition-all duration-300 shadow-md">
                 Learn More
               </button>
             </div>
