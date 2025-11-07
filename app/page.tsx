@@ -1,19 +1,13 @@
+import React from "react";
 
+import Header from "./components/header";
+import Hero from "./components/hero";
+import HowItWorks from "./components/HowltWork";
+import Features from "./components/features";
 
-
-import React from 'react';
-
-import Header from './components/header';
-import Hero from './components/hero';
-import HowItWorks from './components/HowltWork';
-import Features from './components/features';
-
-
-// import Testimonials from './components/testimonials';
-// import CTA from './components/CTA';
-import Footer from './components/footer';
-import ContactForm from './components/contactform';
-import { isPrimaryPointer } from 'framer-motion';
+import Footer from "./components/footer";
+import ContactForm from "./components/contactform";
+import { isPrimaryPointer } from "framer-motion";
 const App: React.FC = () => {
   return (
     <div className="bg-gray-950 min-h-screen font-sans antialiased">
@@ -22,12 +16,8 @@ const App: React.FC = () => {
         <Hero />
         <HowItWorks />
         <Features />
-       
-        {/* <Testimonials /> */}
-        <ContactForm />
 
-     
-        {/* <CTA /> */}
+        <ContactForm />
       </main>
       {/* <Footer /> */}
     </div>

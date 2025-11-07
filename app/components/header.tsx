@@ -1,9 +1,9 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "./icons";
 import Link from "next/link";
+import { label } from "framer-motion/client";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,8 +13,16 @@ const Header: React.FC = () => {
     { href: "/home", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/", label: "For Users" },
+
     { href: "/forvendors", label: "For Vendors" },
   ];
+  // {href: "/features", label "features"} ,// comming soon,
+  // {href: "/how it work", label "how it wok"} ,// comming soon,
+  // {href: "/Blog", label "blog"} ,// comming soon,
+  // {href: "/contact us" , lable : " contact us"} ,// coming soon,
+  {
+    /*  for user and vendors come inside how it works as a drop down*/
+  }
 
   useEffect(() => {
     const handleScroll = () => {

@@ -1,12 +1,13 @@
+
+
+
 "use client";
 
 import React, { useState, useCallback } from "react";
 import { ContactFormData, FormStatus } from "../services/type";
-// import { sendContactMessage } from "../services/contactService";
 import { sendContactMessage } from "../services/contactservices";
 import InputField from "./InputField";
 import TextAreaField from "./TextAreaField";
-import SubmitButton from "./SubmitButton";
 import UserIcon from "./icons/UserIcon";
 import EmailIcon from "./icons/EmailIcon";
 import MessageIcon from "./icons/MessageIcon";
@@ -73,15 +74,24 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-xl w-full bg-gray-900/60 backdrop-blur-sm rounded-2xl shadow-2xl shadow-blue-500/10 p-8 space-y-8 border border-gray-700 ml-120">
+    <div
+      className="w-full max-w-md sm:max-w-lg md:max-w-xl 
+      mx-auto bg-gray-900/60 backdrop-blur-sm 
+      rounded-2xl shadow-2xl shadow-blue-500/10 
+      p-6 sm:p-8 md:p-10 space-y-6 sm:space-y-8 border border-gray-700"
+    >
+      {/* Header */}
       <div className="text-center">
-        <h2 className="text-4xl font-extrabold text-white">Contact Us</h2>
-        <p className="mt-2 text-lg text-gray-400">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+          Contact Us
+        </h2>
+        <p className="mt-2 text-base sm:text-lg text-gray-400">
           We'd love to hear from you!
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         <InputField
           id="name"
           name="name"
@@ -114,30 +124,28 @@ const ContactForm: React.FC = () => {
           icon={<MessageIcon />}
           error={errors.message}
         />
-        {/* <div>
-          <SubmitButton isLoading={status === FormStatus.Loading}>
-            Send Message
-          </SubmitButton>
-        </div> */}
-      <div>
-  <button
-    type="submit"
-    disabled={status === FormStatus.Loading}
-    className="px-6 py-2 font-semibold text-white rounded-lg 
-               bg-gradient-to-r from-[#1394f9] to-[#de9bfd]
-               hover:from-white hover:to-white hover:text-black
-               text-gray-800 border border-gray-300
-               transition-all duration-300 shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
-  >
-    {status === FormStatus.Loading ? "Sending..." : "Submit"}
-  </button>
-</div>
 
+        {/* Submit Button */}
+        <div className="text-center">
+          <button
+            type="submit"
+            disabled={status === FormStatus.Loading}
+            className="w-full sm:w-auto px-6 py-2 sm:py-3 font-semibold text-white rounded-lg 
+                       bg-gradient-to-r from-[#1394f9] to-[#de9bfd]
+                       hover:from-white hover:to-white hover:text-black
+                       border border-transparent hover:border-[#1394f9]
+                       transition-all duration-300 shadow-md 
+                       disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {status === FormStatus.Loading ? "Sending..." : "Submit"}
+          </button>
+        </div>
       </form>
 
+      {/* Response Message */}
       {responseMessage && (
         <div
-          className={`mt-6 p-4 rounded-lg text-center transition-opacity duration-300 ${
+          className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg text-center transition-opacity duration-300 ${
             status === FormStatus.Success
               ? "bg-green-900/50 text-green-300 border border-green-700"
               : ""
@@ -147,7 +155,9 @@ const ContactForm: React.FC = () => {
               : ""
           }`}
         >
-          <p className="font-medium whitespace-pre-wrap">{responseMessage}</p>
+          <p className="font-medium text-sm sm:text-base whitespace-pre-wrap">
+            {responseMessage}
+          </p>
         </div>
       )}
     </div>
