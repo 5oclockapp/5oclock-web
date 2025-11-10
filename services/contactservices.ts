@@ -1,10 +1,11 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { ContactFormData, FormStatus } from '../services/type';
-
+import { ContactFormData, FormStatus } from "./type";
 
 const ai = new GoogleGenerativeAI(process.env.API_KEY as string);
 
-export const sendContactMessage = async (formData: ContactFormData): Promise<string> => {
+export const sendContactMessage = async (
+  formData: ContactFormData
+): Promise<string> => {
   try {
     // Simulate network delay
     await new Promise((resolve) => setTimeout(resolve, 1500));
