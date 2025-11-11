@@ -1,13 +1,11 @@
-
-
+"use client";
 import React from "react";
+import Image from "next/image";
 
 export default function Introducing() {
   return (
     <section className="bg-black min-h-screen flex items-center py-16 px-6 md:px-10">
-      <div
-        className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20"
-      >
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
         {/* LEFT SIDE — Text Section */}
         <div className="relative z-10 text-left">
           {/* Tagline Box */}
@@ -26,58 +24,48 @@ export default function Introducing() {
           </div>
 
           {/* Description */}
-<p className="text-Align-left text-gray-300 font-poppins font-normal text-[20px] leading-relaxed tracking-[0]">
-  Yes, it’s that easy. Our location-based technology picks up when you are<br/> at or near a location within our network and you can earn rewards just <br/> for  
- being there Additional rewards can be earned through leaving reviews, uploading live photos, and interacting with other users  Why not earn money  <br />
-  
- for things you already do? Let us put some money back into your pocket.
-</p>
+          <p className="text-left text-gray-300 font-poppins font-normal text-[20px] leading-relaxed tracking-[0]">
+            Yes, it’s that easy. Our location-based technology picks up when you
+            are <br /> at or near a location within our network and you can earn
+            rewards just <br /> for being there. Additional rewards can be
+            earned through leaving reviews, uploading live photos, and
+            interacting with other users. Why not earn money <br /> for things
+            you already do? Let us put some money back into your pocket.
+          </p>
 
-
-
-
-
-          {/* Buttons */}
-          <div className="flex flex-wrap gap-4 mt-8">
-            {/* iOS Button */}
-            <button
-              className="flex items-center gap-3 px-5 py-3 rounded-lg border border-[#1394f9]
-                bg-gradient-to-r from-[#1394f9] to-[#de9bfd] text-white
-                hover:bg-none hover:bg-[#0b0b0b] hover:border-[#1394f9]
-                transition-all duration-300 shadow-md"
-              style={{
-                fontFamily: "Montserrat",
-                fontWeight: 600,
-                fontSize: "16px",
-              }}
+          {/* Store Buttons */}
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-4 sm:gap-6 mt-10">
+            {/* App Store Button */}
+            <a
+              href="https://apps.apple.com/us/app/apple-store/id123456789"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-105"
             >
-              <img
-                src="/assets/mingcute_apple-line.png"
-                alt="Apple Icon"
-                className="w-6 h-6"
+              <Image
+                src="/assets/5a902db97f96951c82922874 1.png"
+                alt="App Store"
+                width={140}
+                height={45}
+                className="object-contain w-[120px] sm:w-[140px] md:w-[160px]"
               />
-              Download on iOS
-            </button>
+            </a>
 
-            {/* Android Button */}
-            <button
-              className="flex items-center gap-3 px-5 py-3 rounded-lg border border-[#1394f9]
-                bg-[#0b0b0b] text-white
-                hover:bg-gradient-to-r hover:from-[#1394f9] hover:to-[#de9bfd] hover:border-transparent
-                transition-all duration-300 shadow-md"
-              style={{
-                fontFamily: "Montserrat",
-                fontWeight: 600,
-                fontSize: "16px",
-              }}
+            {/* Play Store Button */}
+            <a
+              href="https://play.google.com/store/apps/details?id=com.example.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-105"
             >
-              <img
-                src="/assets/material-symbols_download.png"
-                alt="Android Icon"
-                className="w-6 h-6"
+              <Image
+                src="/assets/5a902dbf7f96951c82922875 1.png"
+                alt="Google Play"
+                width={140}
+                height={45}
+                className="object-contain w-[120px] sm:w-[140px] md:w-[160px]"
               />
-              Get on Android
-            </button>
+            </a>
           </div>
         </div>
 

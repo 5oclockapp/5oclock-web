@@ -10,11 +10,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ imageSrc, alt }) => (
     className="relative flex items-center justify-center rounded-2xl overflow-hidden 
                group transition-all duration-500"
   >
-    {/* Gradient Overlay (visible on hover) */}
+    {/* Gradient Overlay on Hover */}
     <div
       className="absolute inset-0 bg-gradient-to-br from-[#00A7F5]/0 to-[#D99BFF]/0 
                  opacity-0 group-hover:opacity-100 group-hover:from-[#00A7F5]/40 
-                 group-hover:to-[#D99BFF]/40 transition-all duration-500 rounded-2xl"
+                 group-hover:to-[#D99BFF]/40 transition-all duration-500 rounded-2xl mt-2 h-52"
     ></div>
 
     {/* Image */}
@@ -53,21 +53,16 @@ export default function Onasingleplatform() {
         </p>
       </div>
 
-      {/* Responsive Image Grid */}
-      <div className="w-full max-w-7xl">
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
-                     gap-6 sm:gap-8 place-items-center"
-        >
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="w-full max-w-[300px] sm:max-w-[350px] h-[200px] sm:h-[250px] flex"
-            >
-              <FeatureCard imageSrc={feature.imageSrc} alt={feature.alt} />
-            </div>
-          ))}
-        </div>
+      {/* Cards Grid */}
+      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {features.map((feature, index) => (
+          <div
+            key={index}
+            className="aspect-[4/3] flex" // Keeps nice proportions
+          >
+            <FeatureCard imageSrc={feature.imageSrc} alt={feature.alt} />
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -147,3 +147,24 @@
     transform: translateX(-50%);
   }
 }
+
+/* ----- MOBILE FIX ----- */
+@media (max-width: 768px) {
+  .runner-track {
+    width: 1600%; /* make room for 2 visible images */
+    animation: moveForwardMobile 12s linear infinite;
+  }
+
+  .runner {
+    width: 25%; /* show two logos at once */
+  }
+
+  @keyframes moveForwardMobile {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

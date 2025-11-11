@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 
-// ✅ Use your image-based slides instead of Lucide icons
+//  Use your image-based slides instead of Lucide icons
 const slides = [
   {
     title: "Go Out",
@@ -108,7 +108,7 @@ export default function AnimatedEarningSection() {
           className={`w-full h-full bg-black rounded-[15px] p-6 text-white flex items-center justify-start text-left 
           transition-colors duration-300 ${pulseShadow}`}
         >
-          {/* ✅ Image on the left instead of icon */}
+          {/*  Image on the left instead of icon */}
           <div className="flex items-center justify-center w-16 h-16 min-w-16 mr-4">
             <img
               src={img}
@@ -167,10 +167,10 @@ export default function AnimatedEarningSection() {
                 src={slide.map}
                 alt={`${slide.title} Map Screen`}
                 onError={(e) =>
-                  (e.currentTarget.src = `https://placehold.co/280x450/1C1C1C/FFFFFF?text=${slide.title}`)
+                  (e.currentTarget.src = `https://placehold.co/320x500/1C1C1C/FFFFFF?text=${slide.title}`)
                 }
-                className="w-[429.53px] h-auto object-contain z-10 rounded-[40px]"
-                style={{ transform: "rotate(-5deg)" }}
+                className="w-[480px] sm:w-[520px] h-auto object-contain z-10 rounded-[40px] transition-transform duration-500"
+                style={{ transform: "rotate(-5deg) scale(1.05)" }}
               />
             </SlideTransition>
           ))}

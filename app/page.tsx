@@ -18,7 +18,8 @@ import Trustedbyourpatner from "@/components/trustedbyourpatner";
 import Animations from "@/components/animation";
 import Latestsight from "@/components/latestInsight";
 import Readytostart from "@/components/readytostart";
-import ContactForm from "@/components/(static)/contactform/contactform";
+import Readytostartforhome from "@/components/readytostartforhome";
+// import ContactForm from "@/components/(static)/contactform/contactform";
 import { isPrimaryPointer } from "framer-motion";
 const App: React.FC = () => {
   return (
@@ -33,7 +34,8 @@ const App: React.FC = () => {
         <Animations />
         <Latestsight />
         <Readytostart />
-        <ContactForm />
+        {/* <ContactForm /> */}
+        <Readytostartforhome />
       </main>
       {/* <Footer /> */}
     </div>

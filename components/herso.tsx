@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -13,7 +14,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover brightness-90 "
+        className="absolute top-0 left-0 w-full h-full object-cover brightness-90"
       />
 
       {/* Overlay */}
@@ -23,7 +24,7 @@ export default function Hero() {
       <div className="relative container mx-auto px-6 sm:px-8 md:px-10 text-center text-white z-10 flex flex-col justify-center items-center min-h-[80vh] font-extrabold">
         {/* Heading */}
         <motion.h1
-          className="text-center font-poppins font-bold text-[72px] leading-[100%] tracking-[0] text-gray-100 mb-6"
+          className="text-center font-poppins font-bold text-[42px] sm:text-[56px] md:text-[72px] leading-[110%] text-gray-100 mb-4 sm:mb-6"
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -33,7 +34,7 @@ export default function Hero() {
 
         {/* Subheading */}
         <motion.span
-          className="font-poppins font-bold text-[72px] leading-[100%] tracking-[0] bg-gradient-to-r from-[#1394f9] to-[#de9bfd] bg-clip-text text-transparent text-center block"
+          className="font-poppins font-bold text-[42px] sm:text-[56px] md:text-[72px] leading-[110%] bg-gradient-to-r from-[#1394f9] to-[#de9bfd] bg-clip-text text-transparent text-center block"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -43,64 +44,68 @@ export default function Hero() {
 
         {/* Description */}
         <motion.div
-          className="text-center mt-6 text-[24px] text-gray-200 font-[300] leading-[100%] tracking-[0] font-[Poppins] max-w-2xl mx-auto "
+          className="text-center mt-6 text-[18px] sm:text-[20px] md:text-[24px] text-gray-200 font-[300] leading-snug font-[Poppins] max-w-xl sm:max-w-2xl mx-auto px-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <p>Discover local hotspots in real-time, read authentic </p>
-          <p className="mt-5"> reviews,and earn rewards just for going out.</p>
+          <p>Discover local hotspots in real-time, read authentic reviews,</p>
+          <p className="mt-2 sm:mt-4">and earn rewards just for going out.</p>
         </motion.div>
 
-        {/* Buttons */}
+        {/* Store Buttons */}
         <motion.div
-          className="flex flex-wrap justify-center mt-8 gap-4"
+          className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-8 sm:mt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          {/* iOS Button */}
-          <button
-            className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 rounded-lg border border-[#1394f9]
-              bg-gradient-to-r from-[#1394f9] to-[#de9bfd] text-white Text → center aligned
-              hover:bg-none hover:bg-[#0b0b0b] hover:border-[#1394f9]
-              transition-all duration-300 shadow-md text-sm sm:text-base md:text-lg font-Poppins SemiBold (600) Size → 18px Line height → 100%"
+          {/* App Store Button */}
+          <a
+            href="https://apps.apple.com/us/app/apple-store/id123456789"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-all duration-300 hover:scale-105"
           >
-            <img
-              src="/assets/mingcute_apple-line.png"
-              alt="Apple Icon"
-              className="w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7"
+            <Image
+              src="/assets/5a902db97f96951c82922874 1.png"
+              alt="App Store"
+              width={140}
+              height={45}
+              className="object-contain w-[120px] sm:w-[140px] md:w-[160px]"
             />
-            Download on iOS
-          </button>
+          </a>
 
-          {/* Android Button */}
-          <button
-            className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 rounded-lg border border-[#1394f9]
-              bg-[#0b0b0b] text-white
-              hover:bg-gradient-to-r hover:from-[#1394f9] hover:to-[#de9bfd] hover:border-transparent
-              transition-all duration-300 shadow-md text-sm sm:text-base md:text-lg font-Poppins SemiBold (600) Size → 18px"
+          {/* Play Store Button */}
+          <a
+            href="https://play.google.com/store/apps/details?id=com.example.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-all duration-300 hover:scale-105"
           >
-            <img
-              src="/assets/material-symbols_download.png"
-              alt="Android Icon"
-              className="w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7"
+            <Image
+              src="/assets/5a902dbf7f96951c82922875 1.png"
+              alt="Google Play"
+              width={140}
+              height={45}
+              className="object-contain w-[120px] sm:w-[140px] md:w-[160px]"
             />
-            Get on Android
-          </button>
+          </a>
         </motion.div>
 
         {/* Footer */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8 text-sm sm:text-base md:text-lg text-gray-300"
+          className="flex flex-row items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-8 text-sm sm:text-base md:text-lg text-gray-300 whitespace-nowrap"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.3 }}
         >
-          <img
+          <Image
             src="/assets/Ellipse 1.png"
             alt="Dot"
-            className="w-3 h-3 sm:w-4 sm:h-4"
+            width={10}
+            height={10}
+            className="w-2.5 h-2.5 sm:w-3 sm:h-3 object-contain"
           />
           <p>Live on iOS and Android</p>
         </motion.div>
