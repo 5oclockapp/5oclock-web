@@ -136,7 +136,15 @@ const vendorBenefits = [
   },
 ];
 
-const FeatureCard = ({ title, description, icon }) => (
+const FeatureCard = ({
+  title,
+  description,
+  icon,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}) => (
   <div className="bg-[#14141d] p-6 rounded-2xl shadow-xl flex flex-col items-start h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-[#4AAFFF] border border-transparent">
     {/* Icon with Gradient Background */}
     <div
@@ -162,14 +170,14 @@ export default function VendorsComptwo() {
         {/* Title Line - Gradient Text */}
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
           <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent">
-            Why Partner With 5 O'Clock
+            Why Partner With 5 O&apos;Clock
           </span>
         </h1>
 
         {/* Subtitle/Description */}
         <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
           Grow your business faster with more customers, higher visibility, and
-          reliable earnings — powered by 5 O'Clock.
+          reliable earnings — powered by 5 O&apos;Clock.
         </p>
       </div>
 
