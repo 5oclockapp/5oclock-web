@@ -189,24 +189,6 @@ export default function VendorsComptwo() {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <div className=" w-full bg-black">
-      <section className=" scroll-blur-vendor  text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-inter">
-        {/* Header Content */}
-        <div className="max-w-4xl text-center mb-16">
-          {/* Title Line - Gradient Text */}
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-            <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent">
-              Why Partner With 5 O'Clock
-            </span>
-          </h1>
-
-          {/* Subtitle/Description */}
-          <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Grow your business faster with more customers, higher visibility,
-            and reliable earnings — powered by 5 O'Clock.
-          </p>
-=======
     <section className="bg-black text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-inter">
       {/* Header Content */}
       <div className="max-w-4xl text-center mb-16">
@@ -235,7 +217,6 @@ export default function VendorsComptwo() {
               icon={benefit.icon}
             />
           ))}
->>>>>>> 4e1b98e57237ee7dbbe9e4e92a58fb603c6b7ba5
         </div>
 
         {/* Responsive Feature Grid */}
@@ -251,7 +232,7 @@ export default function VendorsComptwo() {
             ))}
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

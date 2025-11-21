@@ -349,7 +349,6 @@ const ContactForm = () => {
             Get In Touch
           </h1>
 
-<<<<<<< HEAD
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
             {/* LEFT FORM */}
             <div>
@@ -367,7 +366,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="John Doe"
                     icon={<UserIcon />}
-                    error={errors.name}
+                    error={errors?.name ?? ""}
                   />
                   <InputField
                     id="email"
@@ -378,7 +377,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="you@example.com"
                     icon={<EmailIcon />}
-                    error={errors.email}
+                    error={errors?.email ?? ""}
                   />
                   <TextAreaField
                     id="message"
@@ -388,57 +387,13 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="Write your message..."
                     icon={<MessageIcon />}
-                    error={errors.message}
+                    error={errors?.message ?? ""}
                   />
                   <div className="text-center pt-4">
                     <button
                       type="submit"
                       disabled={isSubmitting}
                       className="w-full sm:w-auto px-8 py-3 font-semibold rounded-lg text-white
-=======
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          {/* LEFT FORM */}
-          <div>
-            <div className="rounded-2xl p-6 sm:p-8 border border-[#B175FF]/20 bg-transparent backdrop-blur-md shadow-lg hover:shadow-[0_0_25px_rgba(177,117,255,0.2)] transition-all duration-300">
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                <InputField
-                  id="name"
-                  name="name"
-                  label="Full Name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  icon={<UserIcon />}
-                  error={errors?.name ?? ""}
-                />
-                <InputField
-                  id="email"
-                  name="email"
-                  label="Email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  icon={<EmailIcon />}
-                  error={errors?.email ?? ""}
-                />
-                <TextAreaField
-                  id="message"
-                  name="message"
-                  label="Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Write your message..."
-                  icon={<MessageIcon />}
-                  error={errors?.message ?? ""}
-                />
-                <div className="text-center pt-4">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full sm:w-auto px-8 py-3 font-semibold rounded-lg text-white
->>>>>>> 4e1b98e57237ee7dbbe9e4e92a58fb603c6b7ba5
                     bg-gradient-to-r from-[#B175FF] to-[#4AAFFF]
                     hover:from-white hover:to-white hover:text-black transition-all duration-300
                     shadow-lg hover:shadow-[0_0_25px_rgba(177,117,255,0.4)] disabled:opacity-50"

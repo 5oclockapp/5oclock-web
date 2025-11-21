@@ -10,6 +10,13 @@ export default function ScrollRevealMotion({
   baseOpacity = 0.1,
   baseRotation = 5,
   blurStrength = 6,
+}: {
+  children: React.ReactNode;
+  containerClassName?: string;
+  textClassName?: string;
+  baseOpacity?: number;
+  baseRotation?: number;
+  blurStrength?: number;
 }) {
   const ref = useRef(null);
 
