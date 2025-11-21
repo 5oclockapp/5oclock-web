@@ -11,7 +11,8 @@ const FormStatus = {
   Error: "error",
 };
 
-const sendContactMessage = async (data) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const sendContactMessage = async (data: any) => {
   console.log("Mock API call received data:", data);
   await new Promise((resolve) => setTimeout(resolve, 1500));
   if (Math.random() < 0.8) {
@@ -23,9 +24,13 @@ const sendContactMessage = async (data) => {
 
 // --- 2. ICONS ---
 
-const Icon = ({ children, className = "w-5 h-5" }) => (
-  <span className={`text-gray-400 ${className}`}>{children}</span>
-);
+const Icon = ({
+  children,
+  className = "w-5 h-5",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => <span className={`text-gray-400 ${className}`}>{children}</span>;
 
 const UserIcon = () => (
   <Icon>
@@ -44,7 +49,7 @@ const UserIcon = () => (
   </Icon>
 );
 
-const EmailIcon = ({ className }) => (
+const EmailIcon = ({ className }: { className?: string }) => (
   <Icon className={className}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +82,7 @@ const MessageIcon = () => (
   </Icon>
 );
 
-const PhoneIcon = ({ className }) => (
+const PhoneIcon = ({ className }: { className?: string }) => (
   <Icon className={className}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +98,7 @@ const PhoneIcon = ({ className }) => (
   </Icon>
 );
 
-const LocationIcon = ({ className }) => (
+const LocationIcon = ({ className }: { className?: string }) => (
   <Icon className={className}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +115,7 @@ const LocationIcon = ({ className }) => (
   </Icon>
 );
 
-const ClockIcon = ({ className }) => (
+const ClockIcon = ({ className }: { className?: string }) => (
   <Icon className={className}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -139,6 +144,16 @@ const InputField = ({
   placeholder,
   icon,
   error,
+}: {
+  id: string;
+  name: string;
+  label: string;
+  type: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  icon: React.ReactNode;
+  error?: string;
 }) => (
   <div className="space-y-1">
     <label htmlFor={id} className="block text-sm font-medium text-gray-300">
@@ -175,6 +190,15 @@ const TextAreaField = ({
   placeholder,
   icon,
   error,
+}: {
+  id: string;
+  name: string;
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  placeholder: string;
+  icon: React.ReactNode;
+  error?: string;
 }) => (
   <div className="space-y-1">
     <label htmlFor={id} className="block text-sm font-medium text-gray-300">
@@ -204,7 +228,15 @@ const TextAreaField = ({
 
 // --- 4. CONTACT INFO CARD ---
 
-const InfoItem = ({ icon, title, content }) => (
+const InfoItem = ({
+  icon,
+  title,
+  content,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  content: string;
+}) => (
   <div className="flex items-start p-4 rounded-xl bg-black/40 backdrop-blur-md border border-gray-700 hover:border-[#B175FF]/30 transition">
     <div className="p-2 rounded-full bg-gray-800/60 text-[#B175FF]">{icon}</div>
     <div className="ml-4">
@@ -218,8 +250,8 @@ const ContactInfoCard = () => (
   <div className="space-y-6">
     <h2 className="text-3xl font-extrabold text-white">Contact Information</h2>
     <p className="text-gray-400">
-      Whether you're looking to partner with us or just have a general inquiry,
-      we'd love to hear from you.
+      Whether you&apos;re looking to partner with us or just have a general
+      inquiry, we&apos;d love to hear from you.
     </p>
     <div className="space-y-4 pt-4">
       <InfoItem
@@ -256,10 +288,12 @@ const ContactForm = () => {
   });
   const [status, setStatus] = useState(FormStatus.Idle);
   const [responseMessage, setResponseMessage] = useState("");
-  const [errors, setErrors] = useState({});
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [errors, setErrors] = useState<any>({});
 
   const validate = useCallback(() => {
-    const newErrors = {};
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const newErrors: any = {};
     if (!formData.name.trim()) newErrors.name = "Name is required.";
     if (!formData.email.trim()) newErrors.email = "Email is required.";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
@@ -269,12 +303,14 @@ const ContactForm = () => {
     return Object.keys(newErrors).length === 0;
   }, [formData]);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validate()) return;
     setStatus(FormStatus.Loading);
@@ -295,7 +331,7 @@ const ContactForm = () => {
   const isSubmitting = status === FormStatus.Loading;
 
   const messageStyles = useMemo(() => {
-    let base = "mt-6 p-4 rounded-lg text-center text-sm sm:text-base";
+    const base = "mt-6 p-4 rounded-lg text-center text-sm sm:text-base";
     if (status === FormStatus.Success)
       return `${base} bg-green-900/40 text-green-300 border border-green-700`;
     if (status === FormStatus.Error)
@@ -313,6 +349,7 @@ const ContactForm = () => {
             Get In Touch
           </h1>
 
+<<<<<<< HEAD
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
             {/* LEFT FORM */}
             <div>
@@ -358,6 +395,50 @@ const ContactForm = () => {
                       type="submit"
                       disabled={isSubmitting}
                       className="w-full sm:w-auto px-8 py-3 font-semibold rounded-lg text-white
+=======
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+          {/* LEFT FORM */}
+          <div>
+            <div className="rounded-2xl p-6 sm:p-8 border border-[#B175FF]/20 bg-transparent backdrop-blur-md shadow-lg hover:shadow-[0_0_25px_rgba(177,117,255,0.2)] transition-all duration-300">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <InputField
+                  id="name"
+                  name="name"
+                  label="Full Name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  icon={<UserIcon />}
+                  error={errors?.name ?? ""}
+                />
+                <InputField
+                  id="email"
+                  name="email"
+                  label="Email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  icon={<EmailIcon />}
+                  error={errors?.email ?? ""}
+                />
+                <TextAreaField
+                  id="message"
+                  name="message"
+                  label="Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Write your message..."
+                  icon={<MessageIcon />}
+                  error={errors?.message ?? ""}
+                />
+                <div className="text-center pt-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-8 py-3 font-semibold rounded-lg text-white
+>>>>>>> 4e1b98e57237ee7dbbe9e4e92a58fb603c6b7ba5
                     bg-gradient-to-r from-[#B175FF] to-[#4AAFFF]
                     hover:from-white hover:to-white hover:text-black transition-all duration-300
                     shadow-lg hover:shadow-[0_0_25px_rgba(177,117,255,0.4)] disabled:opacity-50"

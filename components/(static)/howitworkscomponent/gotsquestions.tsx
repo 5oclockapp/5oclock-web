@@ -29,7 +29,7 @@ const faqItems = [
 ];
 
 // Plus Icon (for closed state)
-const PlusIcon = (props) => (
+const PlusIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const PlusIcon = (props) => (
 );
 
 // Minus Icon (for open state)
-const MinusIcon = (props) => (
+const MinusIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,15 @@ const MinusIcon = (props) => (
 );
 
 // Individual FAQ item component
-const AccordionItem = ({ item, isOpen, onClick }) => {
+const AccordionItem = ({
+  item,
+  isOpen,
+  onClick,
+}: {
+  item: (typeof faqItems)[0];
+  isOpen: boolean;
+  onClick: () => void;
+}) => {
   return (
     <div
       className={`rounded-xl border transition-all duration-300 mb-4 
@@ -106,9 +114,9 @@ const AccordionItem = ({ item, isOpen, onClick }) => {
 };
 
 export default function GotsQuestions() {
-  const [openItemId, setOpenItemId] = useState(faqItems[0].id);
+  const [openItemId, setOpenItemId] = useState<number | null>(faqItems[0].id);
 
-  const toggleItem = (id) => {
+  const toggleItem = (id: number) => {
     setOpenItemId(openItemId === id ? null : id);
   };
 
@@ -123,12 +131,12 @@ export default function GotsQuestions() {
         {/* Gradient headline */}
         <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
           <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent">
-            We've Got Answers
+            We&apos;ve Got Answers
           </span>
         </h2>
 
         <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Everything you need to know about 5 O' Clock
+          Everything you need to know about 5 O&apos; Clock
         </p>
       </div>
 
