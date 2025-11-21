@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Animations() {
   return (
-    <section className="bg-black py-20 px-6 md:px-10 flex items-center justify-center overflow-hidden">
+    <section className=" scroll-blur bg-black py-20 px-6 md:px-10 flex items-center justify-center overflow-hidden">
       <div className="running-track w-full relative overflow-hidden">
         <div className="runner-track">
           <img src="/assets/Group 76.png" alt="Runner" className="runner" />

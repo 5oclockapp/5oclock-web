@@ -18,8 +18,8 @@ const testimonials = [
 
 export default function WhatOurPartnersSay() {
   return (
-    <section className="bg-black py-16 sm:py-24 font-['Inter']">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="w-full bg-black">
+      <section className=" max-w-7xl mx-auto py-16 sm:py-24 px-4 sm:px-6 lg:px-8 text-center font-['Inter']">
         {/* Section Heading */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-12 leading-tight">
           What Our{" "}
@@ -46,7 +46,7 @@ export default function WhatOurPartnersSay() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

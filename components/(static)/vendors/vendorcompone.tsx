@@ -4,17 +4,17 @@ import React from "react";
 
 export default function VendorComponentone() {
   // Use your uploaded image
-  const dashboardImage = "/assets/Rectangle.png"; // ✅ make sure Rectangle.png is in /public or adjust path accordingly
+  const dashboardImage = "/assets/Rectangle.png"; //  make sure Rectangle.png is in /public or adjust path accordingly
 
   return (
-    <section className="min-h-screen bg-[#0b0b0b] text-white flex items-center justify-center px-6 py-20 font-inter overflow-hidden">
-      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10">
+    <section className="min-h-screen bg-[#0b0b0b] text-white flex items-center justify-center px-6 py-20 font-inter overflow-hidden mt-5">
+      <div className="flex flex-col lg:flex-row items-center justify-between relative z-10">
         {/* Left Side: Text Section */}
-        <div className="lg:w-1/2 flex flex-col text-center lg:text-left mb-16 lg:mb-0">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
+        <div className=" lg:w-1/2 flex flex-col text-center lg:text-left mb-16 lg:mb-0">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
             Grow Your Business
           </h1>
-          <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-8">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-8">
             With
             <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent ml-3">
               5 O'Clock

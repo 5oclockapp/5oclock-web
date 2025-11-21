@@ -3,10 +3,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
+// import ScrollRevealMotion from "@/components/ScrollRevealMotion";
+import ScrollRevealMotion from "./ui/ScrollRevealMotion";
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden font-[Montserrat]">
+    <motion.section
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden font-[Montserrat]"
+    >
       {/* Background Video */}
       <video
         src="/assets/vid-final.mp4"
@@ -110,6 +116,6 @@ export default function Hero() {
           <p>Live on iOS and Android</p>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

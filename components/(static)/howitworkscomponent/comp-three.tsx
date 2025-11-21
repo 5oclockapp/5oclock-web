@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 // SVG Arrow Icons
 const ArrowLeft: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
@@ -98,70 +99,72 @@ export default function ComThree() {
   }, [totalSteps]);
 
   return (
-    <section className="bg-black text-white flex flex-col items-center justify-center py-16 px-6 sm:px-10 font-[Poppins]">
-      {/* Header */}
-      <div className="max-w-4xl text-center mb-10 sm:mb-14">
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">
-          <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent font-Poppins font-bold text-[48px]">
-            How It Works
-          </span>
-        </h1>
-        <p className="font-Poppins text-[24px] leading-[100%] tracking[0]">
-          Five simple steps to start earning rewards
-        </p>
-      </div>
-
-      {/* Main Content */}
-      <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-14">
-        {/* Left: Image */}
-        <div className="relative w-full lg:w-1/2 flex justify-center">
-          <div className="w-[300px] sm:w-[350px] md:w-[380px] lg:w-[400px] xl:w-[420px]">
-            <img
-              src={currentStep.image}
-              alt={`Step ${currentStep.stepNumber}`}
-              className="w-full h-[420px] object-contain rounded-xl transition-all duration-500 ease-in-out"
-            />
-          </div>
-        </div>
-
-        {/* Right: Text */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
-          <p className="font-[Poppins] font-bold text-[24px] text-[#B175FF] text-left mb-2">
-            Step {currentStep.stepNumber}
-          </p>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-5 leading-snug transition-all duration-500 ease-in-out">
-            {currentStep.title}
-          </h2>
-
-          <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-10 transition-all duration-500 ease-in-out">
-            {currentStep.description}
-          </p>
-
-          {/* Navigation Controls */}
-          <div className="flex justify-center lg:justify-start items-center space-x-5">
-            <span className="text-gray-300 text-lg">
-              <strong>{currentStep.stepNumber}</strong> / {totalSteps}
+    <div className="w-full bg-black">
+      <section className="scroll-blur max-w-7xl mx-auto text-white flex flex-col items-center justify-center py-16 px-6 sm:px-10 font-[Poppins]">
+        {/* Header */}
+        <div className="max-w-4xl text-center mb-10 sm:mb-14">
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">
+            <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent font-Poppins font-bold text-[48px]">
+              How It Works
             </span>
+          </h1>
+          <p className="font-Poppins text-[24px] leading-[100%] tracking[0]">
+            Five simple steps to start earning rewards
+          </p>
+        </div>
 
-            <button
-              onClick={handlePrev}
-              className="p-3 rounded-full border border-gray-700 text-white bg-gray-800 hover:bg-gradient-to-r hover:from-[#8a2be2] hover:to-[#4b0082] transition-all duration-300"
-              aria-label="Previous Step"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
+        {/* Main Content */}
+        <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-14">
+          {/* Left: Image */}
+          <div className="relative w-full lg:w-1/2 flex justify-center">
+            <div className="w-[300px] sm:w-[350px] md:w-[380px] lg:w-[400px] xl:w-[420px]">
+              <img
+                src={currentStep.image}
+                alt={`Step ${currentStep.stepNumber}`}
+                className="w-full h-[420px] object-contain rounded-xl transition-all duration-500 ease-in-out"
+              />
+            </div>
+          </div>
 
-            <button
-              onClick={handleNext}
-              className="p-3 rounded-full border border-gray-700 text-white bg-gray-800 hover:bg-gradient-to-r hover:from-[#8a2be2] hover:to-[#4b0082] transition-all duration-300"
-              aria-label="Next Step"
-            >
-              <ArrowRight className="w-5 h-5" />
-            </button>
+          {/* Right: Text */}
+          <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
+            <p className="font-[Poppins] font-bold text-[24px] text-[#B175FF] text-left mb-2">
+              Step {currentStep.stepNumber}
+            </p>
+
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-5 leading-snug transition-all duration-500 ease-in-out">
+              {currentStep.title}
+            </h2>
+
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-10 transition-all duration-500 ease-in-out">
+              {currentStep.description}
+            </p>
+
+            {/* Navigation Controls */}
+            <div className="flex justify-center lg:justify-start items-center space-x-5">
+              <span className="text-gray-300 text-lg">
+                <strong>{currentStep.stepNumber}</strong> / {totalSteps}
+              </span>
+
+              <button
+                onClick={handlePrev}
+                className="p-3 rounded-full border border-gray-700 text-white bg-gray-800 hover:bg-gradient-to-r hover:from-[#8a2be2] hover:to-[#4b0082] transition-all duration-300"
+                aria-label="Previous Step"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={handleNext}
+                className="p-3 rounded-full border border-gray-700 text-white bg-gray-800 hover:bg-gradient-to-r hover:from-[#8a2be2] hover:to-[#4b0082] transition-all duration-300"
+                aria-label="Next Step"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

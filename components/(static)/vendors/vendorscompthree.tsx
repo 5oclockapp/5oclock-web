@@ -72,7 +72,7 @@ const roiStats = [
 
 export default function VendorsCompThree() {
   return (
-    <section className="bg-black text-white flex flex-col items-center justify-center py-20 px-6 font-inter">
+    <section className=" bg-black text-white flex flex-col items-center justify-center py-20 px-6 font-inter">
       {/* Header */}
       <div className="max-w-3xl text-center mb-16">
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">

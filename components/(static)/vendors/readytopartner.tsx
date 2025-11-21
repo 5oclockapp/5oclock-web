@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Readytopartner() {
   return (
-    <section className="bg-black py-20 flex justify-center items-center font-['Inter'] px-4">
+    <section className=" scroll-blur bg-black py-20 flex justify-center items-center font-['Inter'] px-4">
       {/* Highlighted Box */}
       <div className="max-w-5xl w-full sm:w-[1120px] rounded-3xl p-8 sm:p-12 text-center bg-[#1E1E1E]/60 backdrop-blur-md shadow-xl">
         {/* Heading */}

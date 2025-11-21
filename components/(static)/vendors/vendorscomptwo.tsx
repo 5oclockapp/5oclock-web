@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 
 // Data structure for the vendor benefits
 const vendorBenefits = [
@@ -155,37 +157,62 @@ const FeatureCard = ({ title, description, icon }) => (
 );
 
 export default function VendorsComptwo() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.15,
+      }
+    );
+
+    const el = document.querySelector(".scroll-blur-vendor");
+    if (el) observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-black text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-inter">
-      {/* Header Content */}
-      <div className="max-w-4xl text-center mb-16">
-        {/* Title Line - Gradient Text */}
-        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-          <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent">
-            Why Partner With 5 O'Clock
-          </span>
-        </h1>
+    <div className=" w-full bg-black">
+      <section className=" scroll-blur-vendor  text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-inter">
+        {/* Header Content */}
+        <div className="max-w-4xl text-center mb-16">
+          {/* Title Line - Gradient Text */}
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent">
+              Why Partner With 5 O'Clock
+            </span>
+          </h1>
 
-        {/* Subtitle/Description */}
-        <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Grow your business faster with more customers, higher visibility, and
-          reliable earnings — powered by 5 O'Clock.
-        </p>
-      </div>
-
-      {/* Responsive Feature Grid */}
-      <div className="w-full max-w-6xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {vendorBenefits.map((benefit, index) => (
-            <FeatureCard
-              key={index}
-              title={benefit.title}
-              description={benefit.description}
-              icon={benefit.icon}
-            />
-          ))}
+          {/* Subtitle/Description */}
+          <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            Grow your business faster with more customers, higher visibility,
+            and reliable earnings — powered by 5 O'Clock.
+          </p>
         </div>
-      </div>
-    </section>
+
+        {/* Responsive Feature Grid */}
+        <div className="w-full max-w-6xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {vendorBenefits.map((benefit, index) => (
+              <FeatureCard
+                key={index}
+                title={benefit.title}
+                description={benefit.description}
+                icon={benefit.icon}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

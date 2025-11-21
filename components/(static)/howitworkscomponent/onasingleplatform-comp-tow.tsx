@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useEffect } from "react";
 
 interface FeatureCardProps {
   imageSrc: string;
@@ -7,7 +10,7 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ imageSrc, alt }) => (
   <div
-    className="relative flex items-center justify-center rounded-2xl overflow-hidden 
+    className="scroll-blur relative flex items-center justify-center rounded-2xl overflow-hidden 
                group transition-all duration-500"
   >
     {/* Gradient Overlay on Hover */}
@@ -31,39 +34,67 @@ const features = [
   { imageSrc: "/assets/Component 6.png", alt: "Discover Hotspots" },
   { imageSrc: "/assets/Component 8.png", alt: "Share Moments" },
   { imageSrc: "/assets/Component 7.png", alt: "Authentic Reviews" },
-  { imageSrc: "/assets/Component 45 (1).png", alt: "Connect friends" },
-  { imageSrc: "/assets/Component 50.png", alt: "Live updates" },
+  { imageSrc: "/assets/Component 45 (1).png", alt: "Connect Friends" },
+  { imageSrc: "/assets/Component 50.png", alt: "Live Updates" },
   { imageSrc: "/assets/Component 51.png", alt: "Earn Rewards" },
-  { imageSrc: "/assets/Component 52.png", alt: "Instant notifications" },
-  { imageSrc: "/assets/Component 53.png", alt: "No more FOMO" },
+  { imageSrc: "/assets/Component 52.png", alt: "Instant Notifications" },
+  { imageSrc: "/assets/Component 53.png", alt: "No More FOMO" },
 ];
 
 export default function Onasingleplatform() {
-  return (
-    <section className="bg-black text-white flex flex-col items-center justify-center py-20 px-6 sm:px-10 font-[Poppins]">
-      {/* Header */}
-      <div className="max-w-4xl text-center mb-14">
-        <h1 className="text-3xl sm:text-4xl font-extrabold uppercase mb-4 tracking-wide">
-          <span className="bg-gradient-to-r from-[#00A7F5] to-[#D99BFF] bg-clip-text text-transparent">
-            On A Single Platform
-          </span>
-        </h1>
-        <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-          Endless features that serve your going out needs!
-        </p>
-      </div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.15,
+      }
+    );
 
-      {/* Cards Grid */}
-      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-        {features.map((feature, index) => (
-          <div
-            key={index}
-            className="aspect-[4/3] flex" // Keeps nice proportions
-          >
-            <FeatureCard imageSrc={feature.imageSrc} alt={feature.alt} />
-          </div>
-        ))}
-      </div>
-    </section>
+    const elements = document.querySelectorAll(".scroll-blur");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="w-full bg-black">
+      <section
+        className="scroll-blur max-w-7xl mx-auto text-white flex flex-col items-center justify-center 
+                   py-20 px-6 sm:px-10 font-[Poppins]"
+      >
+        {/* Header */}
+        <div className="scroll-blur max-w-4xl text-center mb-14">
+          <h1 className="text-3xl sm:text-4xl font-extrabold uppercase mb-4 tracking-wide">
+            <span className="bg-gradient-to-r from-[#00A7F5] to-[#D99BFF] bg-clip-text text-transparent">
+              On A Single Platform
+            </span>
+          </h1>
+          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Endless features that serve your going out needs!
+          </p>
+        </div>
+
+        {/* Cards Grid */}
+        <div
+          className="scroll-blur w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 
+                     gap-6 sm:gap-8"
+        >
+          {features.map((feature, index) => (
+            <div key={index} className="aspect-[4/3] flex">
+              <FeatureCard imageSrc={feature.imageSrc} alt={feature.alt} />
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

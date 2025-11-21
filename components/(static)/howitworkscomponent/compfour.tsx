@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 // Type for stat props
 interface StatCardProps {
@@ -155,7 +156,7 @@ const stats = [
 
 export default function Compfour() {
   return (
-    <section className="bg-black text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-[Poppins]">
+    <section className="  bg-black text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-[Poppins]">
       {/* Header Content */}
       <div className="max-w-4xl text-center mb-16">
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-2">

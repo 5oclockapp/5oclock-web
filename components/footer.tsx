@@ -93,11 +93,11 @@ const Footer: React.FC = () => {
 
         {/* Navigation Links */}
         <div className="flex justify-center flex-wrap gap-2 mb-10">
-          <NavLink href="#">About Us</NavLink>
-          <NavLink href="#">Feature</NavLink>
-          <NavLink href="#">How It Works</NavLink>
-          <NavLink href="#">Blog</NavLink>
-          <NavLink href="#">Contact Us</NavLink>
+          <NavLink href="about">About Us</NavLink>
+          <NavLink href="users">For Users</NavLink>
+          <NavLink href="vendors">For Vendors</NavLink>
+          <NavLink href="blog">Blog</NavLink>
+          <NavLink href="contactus">Contact Us</NavLink>
         </div>
       </div>
 
@@ -109,8 +109,8 @@ const Footer: React.FC = () => {
           </p>
 
           <div className="flex gap-6">
-            <NavLink href="#">Terms & Conditions</NavLink>
-            <NavLink href="#">Privacy Policy</NavLink>
+            <NavLink href="/terms&conidtion">Terms & Conditions</NavLink>
+            <NavLink href="/privacypolicy">Privacy Policy</NavLink>
           </div>
         </div>
       </div>

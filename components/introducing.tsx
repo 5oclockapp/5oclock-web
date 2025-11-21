@@ -1,11 +1,35 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-
+import { motion } from "framer-motion";
+import ScrollRevealMotion from "./ui/ScrollRevealMotion";
+import { useEffect } from "react";
 export default function Introducing() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.15,
+      }
+    );
+
+    const els = document.querySelectorAll(".scroll-blur");
+    els.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   return (
-    <section className="bg-black min-h-screen flex items-center py-16 px-6 md:px-10">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
+    <section className="scroll-blur w-full">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20 px-6 sm:px-10">
         {/* LEFT SIDE — Text Section */}
         <div className="relative z-10 text-left">
           {/* Tagline Box */}

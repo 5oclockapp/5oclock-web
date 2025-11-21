@@ -113,7 +113,7 @@ export default function GotsQuestions() {
   };
 
   return (
-    <section className="bg-black text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-inter">
+    <section className="  bg-black text-white min-h-[70vh] flex flex-col items-center justify-center p-8 sm:p-12 md:p-20 font-inter">
       {/* Header Content */}
       <div className="max-w-4xl text-center mb-16">
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-2">

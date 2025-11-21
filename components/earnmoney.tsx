@@ -24,7 +24,31 @@ const slides = [
   },
 ];
 
+// 🟣 Scroll Reveal Hook
+function useScrollBlurReveal() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll(".scroll-blur").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+}
+
 export default function AnimatedEarningSection() {
+  useScrollBlurReveal(); // ← activate scroll blur reveal
+
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -40,6 +64,7 @@ export default function AnimatedEarningSection() {
     setCurrent(index);
     setIsPaused(true);
     if (intervalRef.current) clearInterval(intervalRef.current);
+
     setTimeout(() => {
       setIsPaused(false);
       startAutoCycle();
@@ -76,7 +101,7 @@ export default function AnimatedEarningSection() {
     );
   };
 
-  // --- Card Component (Right Side Tabs) ---
+  // --- Card Component ---
   const Card = ({
     title,
     text,
@@ -108,7 +133,7 @@ export default function AnimatedEarningSection() {
           className={`w-full h-full bg-black rounded-[15px] p-6 text-white flex items-center justify-start text-left 
           transition-colors duration-300 ${pulseShadow}`}
         >
-          {/*  Image on the left instead of icon */}
+          {/*  Image Left */}
           <div className="flex items-center justify-center w-16 h-16 min-w-16 mr-4">
             <img
               src={img}
@@ -121,7 +146,7 @@ export default function AnimatedEarningSection() {
             />
           </div>
 
-          {/* Text content */}
+          {/* Text */}
           <div className="flex flex-col">
             <h1
               className={`font-semibold text-xl mb-1 transition-colors duration-300 ${
@@ -138,7 +163,7 @@ export default function AnimatedEarningSection() {
   };
 
   return (
-    <section className="bg-black min-h-screen flex flex-col justify-center items-center text-center px-4 py-20 font-sans">
+    <section className="scroll-blur bg-black min-h-screen flex flex-col justify-center items-center text-center px-4 py-20 font-sans">
       <div className="max-w-4xl mb-16">
         <h1 className="text-6xl font-extrabold tracking-tight mb-4">
           <span className="bg-gradient-to-r from-[#B175FF] to-[#4AAFFF] bg-clip-text text-transparent">
@@ -157,10 +182,10 @@ export default function AnimatedEarningSection() {
         </div>
       </div>
 
-      {/* Layout: Map on left, cards on right */}
+      {/* Layout */}
       <div className="flex flex-col lg:flex-row justify-center items-center w-full max-w-7xl">
-        {/* LEFT SIDE: Animated phone mockups */}
-        <div className="w-full lg:w-1/2 flex justify-center items-center relative h-[500px] min-h-[500px] mb-16 lg:mb-0">
+        {/* LEFT — Map mockups */}
+        <div className="scroll-blur w-full lg:w-1/2 flex justify-center items-center relative h-[500px] min-h-[500px] mb-16 lg:mb-0">
           {slides.map((slide, index) => (
             <SlideTransition key={index} index={index}>
               <img
@@ -176,15 +201,15 @@ export default function AnimatedEarningSection() {
           ))}
         </div>
 
-        {/* RIGHT SIDE: Cards */}
-        <div className="flex flex-col items-center gap-6 w-full lg:w-1/2 lg:pl-12">
+        {/* RIGHT — Cards */}
+        <div className="scroll-blur flex flex-col items-center gap-6 w-full lg:w-1/2 lg:pl-12">
           {slides.map((box, index) => (
             <Card
               key={index}
               title={box.title}
               text={box.text}
-              index={index}
               img={box.card}
+              index={index}
             />
           ))}
         </div>
